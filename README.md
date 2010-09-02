@@ -10,13 +10,19 @@ environments
 
 Todos:
 --------------------
-* 用web_app_theme
 * rss
-* textile显示文章
+* markdown显示文章
+* 优化一下界面....
 
 Finished:
 -------------------
-* textile显示简介
+* markdown显示简介
+* heroku mongohq
+
+Abandoned:
+--------------
+* 用web_app_theme
+
 
 强大版要做的:
 --------------------
