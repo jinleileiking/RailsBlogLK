@@ -12,14 +12,17 @@
   %body
     .container_12
       .grid_8
-        Title
+        %h1 Leiking的网上的家
       .grid_4
-        = render :partial => 'layouts/log'  
+        %h1 &nbsp;
+        -#= render :partial => 'layouts/log'  
+    .clearfix
+    .container_12
+      = render :partial => 'layouts/menu'
     .container_12
       .grid_12
         = render :partial => 'layouts/tip'
     .container_12
-      .grid_7
-        = yield
-      .grid_5
-        = render :partial => 'layouts/sidebar'
+      = yield
+      -#.grid_5
+        -#= render :partial => 'layouts/sidebar'

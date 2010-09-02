@@ -24,6 +24,7 @@ gem 'inherited_resources', '1.1.2'
 #for devise to generate haml
 gem 'hpricot', :group => :development
 gem 'ruby_parser', :group => :development
+gem 'maruku'
 
 # uncomment the next line if you wish to deploy to Heroku
 # gem 'heroku', '1.9.12'

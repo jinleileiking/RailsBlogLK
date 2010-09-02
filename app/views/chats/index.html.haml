@@ -1,0 +1,5 @@
+-@chats.each do |item|
+  .grid_8
+    %p!= item[:content]
+  .grid_4
+    %p= "写于#{item[:published]}"

@@ -1,21 +1,7 @@
-%h1 Listing articles
-
-%table
-  %tr
-    %th Title
-    %th Content
-    %th
-    %th
-    %th
-
-  - @articles.each do |article|
-    %tr
-      %td= article.title
-      %td= article.content
-      %td= link_to 'Show', article
-      %td= link_to 'Edit', edit_article_path(article)
-      %td= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New article', new_article_path
+-@articles.each do |item|
+  .grid_8
+    %h1= link_to item[:title], item[:href]
+  .grid_4
+    = "写于 #{item[:published]}"
+  .grid_8
+    %p= item[:content]

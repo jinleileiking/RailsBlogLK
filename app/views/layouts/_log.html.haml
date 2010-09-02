@@ -1,10 +1,11 @@
 #coding: utf-8
-%ul
-  -if user_signed_in?
-    %li= "#{current_user.nickname}, 你好!"
-    %li=link_to '修改账户', edit_user_registration_path
-    %li=link_to '修改密码', edit_user_password_path
-    %li=link_to "注销", destroy_user_session_path
-  -else
-    %li=link_to "登录", new_user_session_path  
-    %li=link_to "注册", new_user_registration_path
+= link_to '订阅RSS', 'http://www.douban.com/feed/people/jinleileiking/notes'
+-#%ul
+  -#-if user_signed_in?
+    -#%li= "#{current_user.nickname}, 你好!"
+    -#%li=link_to '修改账户信息', edit_user_registration_path
+    -#-#%li=link_to '修改密码', edit_user_password_path
+    -#%li=link_to "注销", destroy_user_session_path
+  -#-else
+    -#%li=link_to "登录", new_user_session_path  
+    -#%li=link_to "注册", new_user_registration_path

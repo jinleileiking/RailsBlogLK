@@ -1,5 +1,11 @@
 RailsBlogLK::Application.routes.draw do
   resources :articles
+  resources :photos
+  resources :chats
+  resources :reads
+  resources :watchs
+
+  match 'about/index' => 'about#index'
 
   devise_for :users
 

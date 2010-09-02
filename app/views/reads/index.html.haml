@@ -1,0 +1,4 @@
+.grid_12
+%ul
+  -@read_from_douban.each do |item|
+    %li=link_to item[:title], item[:href]

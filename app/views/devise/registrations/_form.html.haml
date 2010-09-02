@@ -1,9 +1,5 @@
 #coding: utf-8
-%h2 注册
 
-= render :partial => 'layouts/error'
-
--#= render :partial => 'form'
 - semantic_form_for resource, :url => registration_path(resource_name), :as => resource_name do |form|
   -#= form.error_messages
   -#= form.semantic_errors

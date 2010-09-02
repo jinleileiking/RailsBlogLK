@@ -1,83 +1,48 @@
 class ArticlesController < InheritedResources::Base
-  # GET /articles
-  # GET /articles.xml
-  #def index
-    #@articles = Article.all
+  def getArticlesCollection()
+    require "rexml/document"
+    #url = 'http://api.douban.com/people/jinleileiking/collection?cat=book&status=read&max-results=100'
+    url = 'http://api.douban.com/people/jinleileiking/notes'
+    #url = 'http://api.douban.com/people/jinleileiking/notes?start-index=1&max-results=1'
 
-    #respond_to do |format|
-      #format.html # index.html.erb
-      #format.xml  { render :xml => @articles }
-    #end
-  #end
+    atom = Net::HTTP.get(URI(url))
 
-  # GET /articles/1
-  # GET /articles/1.xml
-  #def show
-    #@article = Article.find(params[:id])
+    @table = []
+    doc=REXML::Document.new(atom)
 
-    #respond_to do |format|
-      #format.html # show.html.erb
-      #format.xml  { render :xml => @article }
-    #end
-  #end
+    tmp = 0
+    doc.elements.each("//entry/title") do |e|
+      @table[tmp] = {:title => e.text}
+      tmp = tmp +1
+    end
 
-  # GET /articles/new
-  # GET /articles/new.xml
-  #def new
-    #@article = Article.new
 
-    #respond_to do |format|
-      #format.html # new.html.erb
-      #format.xml  { render :xml => @article }
-    #end
-  #end
+    tmp = 0
+    doc.elements.each("//entry/content") do |e|
+      @table[tmp] = @table[tmp].merge({:content => e.text})
+      tmp = tmp +1
+    end
 
-  # GET /articles/1/edit
-  #def edit
-    #@article = Article.find(params[:id])
-  #end
+    tmp = 0
+    doc.elements.each("//entry/published") do |e|
+      e.text[/(.+)T(.+)\+/]
+      text = "#{$1} #{$2}"
+      @table[tmp] = @table[tmp].merge({:published => text})
+      tmp = tmp +1
+    end
+    
+    tmp = 0
+    doc.elements.each("//entry/link") do |e|
+      if e.attributes["rel"] == "alternate"
+        @table[tmp] = @table[tmp].merge({:href => e.attributes["href"]})
+        tmp = tmp +1
+      end
+    end
 
-  # POST /articles
-  # POST /articles.xml
-  #def create
-    #@article = Article.new(params[:article])
+    @table
+  end
 
-    #respond_to do |format|
-      #if @article.save
-        #format.html { redirect_to(@article, :notice => 'Article was successfully created.') }
-        #format.xml  { render :xml => @article, :status => :created, :location => @article }
-      #else
-        #format.html { render :action => "new" }
-        #format.xml  { render :xml => @article.errors, :status => :unprocessable_entity }
-      #end
-    #end
-  #end
-
-  ## PUT /articles/1
-  ## PUT /articles/1.xml
-  #def update
-    #@article = Article.find(params[:id])
-
-    #respond_to do |format|
-      #if @article.update_attributes(params[:article])
-        #format.html { redirect_to(@article, :notice => 'Article was successfully updated.') }
-        #format.xml  { head :ok }
-      #else
-        #format.html { render :action => "edit" }
-        #format.xml  { render :xml => @article.errors, :status => :unprocessable_entity }
-      #end
-    #end
-  #end
-
-  ## DELETE /articles/1
-  ## DELETE /articles/1.xml
-  #def destroy
-    #@article = Article.find(params[:id])
-    #@article.destroy
-
-    #respond_to do |format|
-      #format.html { redirect_to(articles_url) }
-      #format.xml  { head :ok }
-    #end
-  #end
+  def index
+    @articles = getArticlesCollection
+  end
 end
