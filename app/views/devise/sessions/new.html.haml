@@ -1,16 +1,28 @@
-%h2 Sign in
-= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  %p
-    = f.label :email
-    %br/
-    = f.text_field :email
-  %p
-    = f.label :password
-    %br/
-    = f.password_field :password
-  - if devise_mapping.rememberable?
-    %p
-      = f.check_box :remember_me
-      = f.label :remember_me
-  %p= f.submit "Sign in"
-= render :partial => "devise/shared/links"
+#coding: utf-8
+%h2 登录
+- semantic_form_for resource, :url => session_path(resource_name), :as => resource_name do |form|
+  -#= form.semantic_errors
+  -#= devise_error_messages!
+  - form.inputs do
+    = form.input :email, :label => 'Email', :as => :string,  :input_html => { :style => "width: 150px" }
+    = form.input :password, :label => '密码', :as => :password,  :input_html => { :style => "width: 150px" }
+    = form.input :remember_me, :label => '记住我', :as => :boolean
+  - form.buttons do
+    = form.commit_button :label => '登录'
+-#= render :partial => "devise/shared/links"
+-#%h2 Sign in
+-#= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  -#%p
+    -#= f.label :email
+    -#%br/
+    -#= f.text_field :email
+  -#%p
+    -#= f.label :password
+    -#%br/
+    -#= f.password_field :password
+  -#- if devise_mapping.rememberable?
+    -#%p
+      -#= f.check_box :remember_me
+      -#= f.label :remember_me
+  -#%p= f.submit "Sign in"
+-#= render :partial => "devise/shared/links"

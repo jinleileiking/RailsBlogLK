@@ -1,0 +1,14 @@
+#coding: utf-8
+- unless flash.empty?
+  - if flash.first[0] == :alert
+    %b= "出错啦!"
+  - flash.each do |name, msg|
+    %li= "#{msg}"
+-#= p resource
+-#- if resource 
+  -#- if resource.errors
+    -#- unless resource.errors.empty?
+      -#%b= "出错啦!"
+  -#%ul
+    -#- resource.errors.full_messages.each do |message|
+      -#%li= "#{message}"

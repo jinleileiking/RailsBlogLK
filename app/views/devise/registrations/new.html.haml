@@ -1,10 +1,15 @@
 #coding: utf-8
 %h2 注册
 
+= render :partial => 'layouts/error'
+
 - semantic_form_for resource, :url => registration_path(resource_name), :as => resource_name do |form|
-  = form.semantic_errors
+  -#= form.error_messages
+  -#= form.semantic_errors
+  -#= devise_error_messages!
   - form.inputs do
-    = form.input :name, :label => '用户名', :as => :string,  :input_html => { :style => "width: 150px" }
+    = form.input :email, :label => 'Email', :as => :string,  :input_html => { :style => "width: 150px" }
+    = form.input :nickname, :label => '昵称', :as => :string,  :input_html => { :style => "width: 150px" }
     = form.input :password, :label => '密码', :as => :password,  :input_html => { :style => "width: 150px" }
     = form.input :password_confirmation, :label => '密码确认', :as => :password,  :input_html => { :style => "width: 150px" }
   - form.buttons do
@@ -25,4 +30,4 @@
     -#%br/
     -#= f.password_field :password_confirmation
   -#%p= f.submit "Sign up"
-= render :partial => "devise/shared/links"
+-#= render :partial => "devise/shared/links"
