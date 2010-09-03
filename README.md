@@ -12,12 +12,13 @@ Todos:
 --------------------
 * rss
 * markdown显示文章
-* 优化一下界面....
+* 文章的显示还要优化
 
 Finished:
 -------------------
 * markdown显示简介
 * heroku mongohq
+* menu 使用: http://www.webdesignerwall.com/demo/css3-dropdown-menu/css-gradient-dropdown.html,自己修改了些
 
 Abandoned:
 --------------

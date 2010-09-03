@@ -26,6 +26,14 @@ gem 'hpricot', :group => :development
 gem 'ruby_parser', :group => :development
 gem 'maruku'
 
+# 修改后台文件后，safari或chrome浏览器会自动刷新
+gem "livereload", :group => :development
+gem "rb-inotify", :group => :development # need by livereload, 
+#gem 'chriseppstein-compass-colors'
+gem 'flutie'
+#gem 'hpoydar-compass-aristo-plugin', :git => 'http://github.com/hpoydar/compass-aristo-plugin.git'
+#gem 'fancy-buttons'
+
 # uncomment the next line if you wish to deploy to Heroku
 # gem 'heroku', '1.9.12'
 # 

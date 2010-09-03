@@ -6,6 +6,7 @@ RailsBlogLK::Application.routes.draw do
   resources :watchs
 
   match 'about/index' => 'about#index'
+  resource :styleguides, :as => :styleguide, :controller => 'flutie/styleguides', :only => [:show]
 
   devise_for :users
 

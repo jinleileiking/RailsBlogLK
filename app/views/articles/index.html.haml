@@ -1,7 +1,8 @@
 -@articles.each do |item|
   .grid_8
-    %h1= link_to item[:title], item[:href]
+    %h3= link_to item[:title], item[:href]
   .grid_4
     = "写于 #{item[:published]}"
-  .grid_8
+  .clear
+  .grid_8.suffix_4
     %p= item[:content]
