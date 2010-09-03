@@ -15,7 +15,17 @@
 .right {
   float: right;
 }
-  
+
 .clear_float {
   clear: both;
+}
+
+.article_title {
+  background: -moz-linear-gradient(top, #35425d 0%, #fff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#35425d), to(#fff));
+}
+
+.title {
+  text-shadow: 2px 2px 7px #111;
+  font-size: 3.2em;
 }

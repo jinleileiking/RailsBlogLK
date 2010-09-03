@@ -2,8 +2,8 @@
   %h4.left= link_to item[:title], item[:href]
   %p.right= "写于 #{item[:published]}"
   .clear_float
+  -#%p.article_title= item[:content]
   %p= item[:content]
-
   -#.grid_5
     -#%h4= link_to item[:title], item[:href]
   -#.grid_3.suffix_2= "写于 #{item[:published]}"
