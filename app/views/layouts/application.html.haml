@@ -19,7 +19,8 @@
       = render :partial => 'layouts/menu'
       %p &nbsp;
       = render :partial => 'layouts/tip'
-      = yield
+      .grid_9.box_shadow
+        = yield
       -#.grid_5
         -#= render :partial => 'layouts/sidebar'
       = render :partial => 'layouts/footer'
